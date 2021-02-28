@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init('user_NBdl8DJoNon3m1ahxmgNW')
+    </script>
+
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>Teste de envio de email</h1>
+        <form onsubmit="enviarEmail()">
+            <div style="margin-left: -7%; margin-bottom: 5px;">
+                <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-16.png">
+                Nome:
+            </div>
+            <input type="text" name="nome" value="" placeholder="Digite seu nome">
+            <br><br>
+            <div style="margin-left: -7%; margin-bottom: 5px;">
+                <img src="https://cdn0.iconfinder.com/data/icons/education-340/100/Tilda_Icons_1ed_mail-16.png">
+                Email:
+            </div>
+            <input type="text" name="email" placeholder="Digite seu email">
+            <br><br>
+            <div style="margin-left: -7%; margin-bottom: 5px;">
+                <img src="https://cdn0.iconfinder.com/data/icons/gcons-2/21/test1-16.png">
+                Exame:
+            </div>
+            <input type="text" name="exame" placeholder="Digite o nome do exame">
+            <br><br>
+            <div style="margin-left: -7.6%; margin-bottom: 5px;">
+                <img src="https://cdn4.iconfinder.com/data/icons/free-glyph-christmas-icons/24/Christmas_Date-16.png">
+                Data:
+            </div>
+            <input style="width: 158px;" type="date" name="data_exame" placeholder="Data do exame">
+            <br>
+            <br>
+            <br>
+            <button type="submit" style="width: 176px;">
+                <img src="https://cdn3.iconfinder.com/data/icons/approve/32/Aproved_Outline_Data_Approved-16.png">
+                &ensp;Marcar Exame</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var enviarEmail = function () {
+        var email = {
+            nome: document.getElementsByName("nome")[0].value,
+            exame: document.getElementsByName("exame")[0].value,
+            data_exame: document.getElementsByName("data_exame")[0].value,
+            email: document.getElementsByName("email")[0].value,
+        }
+
+        emailjs.send("service_0wc31jo", "template_nvo2ha3", email)
+            .then(() => {
+                alert('Email enviado com sucesso!');
+            }, (err) => {
+                alert(JSON.stringify(err));
+            });
+    }
+</script>
